@@ -41,14 +41,19 @@ jobs:
           MQTTNotifier/bin/Release/MQTTNotifier.exe
           MQTTNotifier/bin/Release/MQTTNotifier.exe.config
           
-    - name: Download artifacts
-      uses: actions/download-artifact@v4
+    - name: Zip artefacts for release
+      uses: vimtor/action-zip@v1.2
       with:
-        path: ./binaries
-
+        recursive: false
+        dest: MQTTNotifier-${{github.ref_name}}.zip
+        files: |
+          MQTTNotifier/bin/Release/M2Mqtt.Net.dll
+          MQTTNotifier/bin/Release/MQTTNotifier.exe
+          MQTTNotifier/bin/Release/MQTTNotifier.exe.config
+        
     - name: Upload binaries to release
       uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/v')
       with:
         files: |
-          ./binaries/MQTTNotifier/*
+          MQTTNotifier-${{github.ref_name}}.zip
