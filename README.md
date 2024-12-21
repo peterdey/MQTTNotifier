@@ -5,6 +5,8 @@ Supports two message formats:
 - Raw: Message text appears as the content
 - JSON (HomeAssistant format): `{"title": "Message title", "message": "Hello world!"}`
 
+![Screenshot of Windows 11 Toast Notification](screenshot.png "Screenshot of Windows 11 Toast Notification")
+
 # Usage
 The program folder can be placed anywhere (e.g. C:\Program Files\MQTTNotifier)
 
