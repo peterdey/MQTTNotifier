@@ -1,0 +1,4 @@
+# Ignore build artefacts
+bin/
+obj/
+ToastNotificationApp.log
