@@ -43,3 +43,15 @@ jobs:
           MQTTNotifier/bin/Release/M2Mqtt.Net.dll
           MQTTNotifier/bin/Release/MQTTNotifier.exe
           MQTTNotifier/bin/Release/MQTTNotifier.exe.config
+          
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with:
+        path: ./binaries
+
+    - name: Upload binaries to release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/v')
+      with:
+        files: |
+          ./binaries/MQTTNotifier/*
